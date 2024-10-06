@@ -186,11 +186,13 @@ Method (_CRS, 0, Serialized)
 				0x00000000, PCH_PRESERVED_BASE_ADDRESS, 0xfe7fffff,
 				0x00000000, PCH_PRESERVED_BASE_SIZE)
 
+#if !CONFIG(CRB_TPM) || (CONFIG_CRB_TPM_BASE_ADDRESS != 0xfed40000)
 		/* TPM Area (0xfed40000-0xfed47fff) */
 		DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed,
 				Cacheable, ReadWrite,
 				0x00000000, 0xfed40000, 0xfed47fff, 0x00000000,
 				0x00008000)
+#endif
 	})
 
 	/* Find PCI resource area in MCRS */
