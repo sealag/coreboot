@@ -1,0 +1,17 @@
+## SPDX-License-Identifier: GPL-2.0-only
+
+if VENDOR_SEAL
+
+choice
+	prompt "Mainboard model"
+
+source "src/mainboard/seal/*/Kconfig.name"
+
+endchoice
+
+source "src/mainboard/seal/*/Kconfig"
+
+config MAINBOARD_VENDOR
+	default "SEAL"
+
+endif # VENDOR_SEAL

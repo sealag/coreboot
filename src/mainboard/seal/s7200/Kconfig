@@ -1,0 +1,42 @@
+## SPDX-License-Identifier: GPL-2.0-or-later
+
+if BOARD_SEAL_S7200
+
+config BOARD_SPECIFIC_OPTIONS
+	def_bool y
+	select BOARD_ROMSIZE_KB_32768
+	select CRB_TPM
+	select DRIVERS_INTEL_PMC
+	select DRIVERS_UART_8250IO
+	select DRIVERS_WWAN_FM350GL
+	select FSP_TYPE_IOT
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select HAVE_INTEL_PTT
+	select HAVE_SPD_IN_CBFS
+	select INTEL_GMA_HAVE_VBT
+	select MAINBOARD_HAS_TPM2
+	select SOC_INTEL_ALDERLAKE_PCH_N
+	select SUPERIO_FINTEK_F81216E
+
+config MAINBOARD_DIR
+	default "seal/s7200"
+
+config MAINBOARD_PART_NUMBER
+	default "S7200"
+
+config NO_POST
+	default y
+
+config UART_FOR_CONSOLE
+	int
+	default 0
+
+config WDT_ENABLE
+	bool "Enable ACPI watchdog timer"
+	select ACPI_WDAT_WDT
+	select USE_PM_ACPI_TIMER
+	help
+	  This option enables the ACPI watchdog timer. If selected, S0ix is disabled.
+
+endif
